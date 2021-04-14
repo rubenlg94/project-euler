@@ -29,7 +29,7 @@ public class Problem61 {
         octagonals.removeIf(integer -> integer < 1000 || integer > 9999);
 
         int triangePosition = 0, squarePosition = 0, pentagonalPosition = 0, hexagonalPosition = 0, heptagonalPosition = 0, octagonalPosition = 0;
-        for(Integer octagonal : octagonals){
+        for (Integer octagonal : octagonals) {
             List<Integer> possibleTriangles = triangles.stream().filter(integer -> String.valueOf(integer).substring(0, 2).equals(String.valueOf(octagonal).substring(2))).collect(Collectors.toList());
             List<Integer> possibleHeptagonals = heptagonals.stream().filter(integer -> String.valueOf(integer).substring(0, 2).equals(String.valueOf(octagonal).substring(2))).collect(Collectors.toList());
             System.out.println();

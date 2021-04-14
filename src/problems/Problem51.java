@@ -11,11 +11,11 @@ public class Problem51 {
         primeDigitReplacements();
     }
 
-    public static void primeDigitReplacements(){
+    public static void primeDigitReplacements() {
         boolean[] notPrimes = Utils.getNotPrimes();
         List<Integer> primes = new ArrayList<>();
-        for(int i = 0; i < notPrimes.length; i++){
-            if(!notPrimes[i]){
+        for (int i = 0; i < notPrimes.length; i++) {
+            if (!notPrimes[i]) {
                 primes.add(i);
             }
         }

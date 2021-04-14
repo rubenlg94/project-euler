@@ -16,7 +16,7 @@ public class Problem56 {
         long result = 0;
         for (BigInteger bigInteger : bigIntegers) {
             long auxResult = digitalSum(bigInteger);
-            if(auxResult > result){
+            if (auxResult > result) {
                 result = auxResult;
             }
         }

@@ -24,7 +24,7 @@ public class Problem12 {
     public static void highlyDivisibleTriangularNumber() {
         int number = 0;
         int increase = 1;
-        while(numberOfDivisors(number) < 500){
+        while (numberOfDivisors(number) < 500) {
             number += increase;
             increase++;
         }
@@ -34,12 +34,12 @@ public class Problem12 {
     public static int numberOfDivisors(int number) {
         int nod = 0;
         int sqrt = (int) Math.sqrt(number);
-        for(int i = 1; i <= sqrt; i++){
-            if(number % i == 0){
+        for (int i = 1; i <= sqrt; i++) {
+            if (number % i == 0) {
                 nod += 2;
             }
         }
-        if(sqrt*sqrt == number){
+        if (sqrt * sqrt == number) {
             nod--;
         }
         return nod;

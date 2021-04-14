@@ -10,7 +10,7 @@ public class Problem3 {
     What is the largest prime factor of the number 600851475143 ?
      */
 
-    public static void solve(){
+    public static void solve() {
         largestPrimeFactor();
     }
 
@@ -18,11 +18,10 @@ public class Problem3 {
         long number = 600851475143L;
         int numberSqrt = (int) Math.sqrt(number);
         boolean found = false;
-        while(!found){
-            if(number % numberSqrt == 0 && Utils.isPrime(numberSqrt)){
+        while (!found) {
+            if (number % numberSqrt == 0 && Utils.isPrime(numberSqrt)) {
                 found = true;
-            }
-            else {
+            } else {
                 numberSqrt--;
             }
         }

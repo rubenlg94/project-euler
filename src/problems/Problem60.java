@@ -50,7 +50,7 @@ public class Problem60 {
         int[] fivePrimeSet = new int[5];
         for (int i = fourPrimesSet[3] + 1; i < numbers.length && fivePrimeSet[3] == 0; i++) {
             if (!numbers[i]) {
-                if ((fourPrimesSet[3] * 10) + i < numbers.length && (i*10) + fourPrimesSet[3] < numbers.length) {
+                if ((fourPrimesSet[3] * 10) + i < numbers.length && (i * 10) + fourPrimesSet[3] < numbers.length) {
                     if (!numbers[(fourPrimesSet[0] * 10) + i] && !numbers[(fourPrimesSet[1] * 10) + i] && !numbers[(fourPrimesSet[2] * 10) + i] && !numbers[(fourPrimesSet[3] * 10) + i]
                             && !numbers[(i * 10) + fourPrimesSet[0]] && !numbers[(i * 10) + fourPrimesSet[1]] && !numbers[(i * 10) + fourPrimesSet[2]] && !numbers[(i * 10) + fourPrimesSet[3]]) {
                         fivePrimeSet[0] = fourPrimesSet[0];

@@ -6,7 +6,7 @@ public class Problem45 {
         triangularPentagonalHexagonal();
     }
 
-    public static void triangularPentagonalHexagonal(){
+    public static void triangularPentagonalHexagonal() {
 //        boolean[] pentagonals = new boolean[2000000000];
 //        boolean[] hexagonals = new boolean[2000000000];
 //        int currentTriangulars = 1, currentPentagonals = 1, currentHexagonals = 1;

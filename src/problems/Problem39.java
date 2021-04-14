@@ -10,16 +10,16 @@ public class Problem39 {
         integerRightTriangles();
     }
 
-    public static void integerRightTriangles(){
+    public static void integerRightTriangles() {
         long number = 5;
         List<Long> primeFactors = Utils.getPrimeFactors(number);
         long result = 5;
-        while(number <= 1000){
-            if(number == 840){
+        while (number <= 1000) {
+            if (number == 840) {
                 System.out.println();
             }
             List<Long> auxPrimeFactors = Utils.getPrimeFactors(number);
-            if(auxPrimeFactors.size() >= primeFactors.size()){
+            if (auxPrimeFactors.size() >= primeFactors.size()) {
                 primeFactors = auxPrimeFactors;
                 result = number;
             }

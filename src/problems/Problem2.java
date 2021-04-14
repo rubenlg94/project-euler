@@ -12,15 +12,15 @@ public class Problem2 {
     By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the even-valued terms.
      */
 
-    public static void solve(){
+    public static void solve() {
         evenFibonacciNumbers();
     }
 
-    public static void evenFibonacciNumbers(){
+    public static void evenFibonacciNumbers() {
         int result = 0;
         int previous = 1;
         int current = 1;
-        while(current < 4000000) {
+        while (current < 4000000) {
             current = current + previous;
             previous = current - previous;
             if (Utils.isEven(current)) {

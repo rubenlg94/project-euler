@@ -15,7 +15,7 @@ public class Problem42 {
 
     public static void codedTriangleNumbers() throws IOException {
         String fileContent = new String(Files.readAllBytes(Paths.get("./src/resources/p42_words.txt")));
-        List<String> words = Arrays.asList(fileContent.replace("\r", "").split(","));
+        String[] words = fileContent.replace("\r", "").split(",");
         List<String> letters = Arrays.asList("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z");
         List<Integer> triangleNumbers = new ArrayList<>();
         triangleNumbers.add(1);
@@ -23,8 +23,8 @@ public class Problem42 {
         int count = 0;
         for (String word : words) {
             int wordValue = 0;
-            for(int i = 0; i < word.length(); i++){
-                String letter = word.substring(i, i+1);
+            for (int i = 0; i < word.length(); i++) {
+                String letter = word.substring(i, i + 1);
                 wordValue += letter.indexOf(letter) + 1;
             }
         }

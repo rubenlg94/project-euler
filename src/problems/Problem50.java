@@ -19,7 +19,7 @@ public class Problem50 {
                 if (!numbers[j]) {
                     auxNumberOfPrimes++;
                     auxResult += j;
-                    if(auxResult == 997663){
+                    if (auxResult == 997663) {
                         System.out.println();
                     }
                     if (auxNumberOfPrimes > numberOfPrimes && auxResult > 1000 && auxResult < 1000000 && !numbers[auxResult]) {
@@ -36,7 +36,7 @@ public class Problem50 {
         System.out.println(numberOfPrimes);
     }
 
-    public static void consecutivePrimeSum2(){
+    public static void consecutivePrimeSum2() {
         boolean[] numbers = Utils.getNotPrimes();
         int numberOfPrimes = 0;
         int result = 0;

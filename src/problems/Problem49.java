@@ -10,11 +10,10 @@ public class Problem49 {
         primePermutations();
     }
 
-    public static void primePermutations(){
+    public static void primePermutations() {
         List<String> combinations = Utils.permutations("1234");
         System.out.println();
     }
-
 
 
 }

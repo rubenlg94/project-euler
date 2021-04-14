@@ -28,17 +28,16 @@ public class Problem25 {
         day25();
     }
 
-    public static void day25(){
+    public static void day25() {
         BigInteger bigInteger = BigInteger.valueOf(1);
         BigInteger bigInteger1 = BigInteger.valueOf(1);
         long position = 3;
         boolean found = false;
-        while(!found){
+        while (!found) {
             BigInteger result = bigInteger.add(bigInteger1);
-            if(result.toString().length() >= 1000){
+            if (result.toString().length() >= 1000) {
                 found = true;
-            }
-            else{
+            } else {
                 bigInteger = bigInteger1;
                 bigInteger1 = result;
                 position++;

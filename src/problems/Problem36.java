@@ -8,10 +8,10 @@ public class Problem36 {
         doubleBasePalindromes();
     }
 
-    public static void doubleBasePalindromes(){
+    public static void doubleBasePalindromes() {
         long result = 0;
-        for(int i = 0; i < 1000000; i++){
-            if(Utils.isPalindrome(String.valueOf(i)) && Utils.isPalindrome(Integer.toBinaryString(i))){
+        for (int i = 0; i < 1000000; i++) {
+            if (Utils.isPalindrome(String.valueOf(i)) && Utils.isPalindrome(Integer.toBinaryString(i))) {
                 result += i;
             }
         }
