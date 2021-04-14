@@ -17,7 +17,11 @@ public class Problem12 {
     What is the value of the first triangle number to have over five hundred divisors?
      */
 
-    public static void HighlyDivisibleTriangularNumber() {
+    public static void solve() {
+        highlyDivisibleTriangularNumber();
+    }
+
+    public static void highlyDivisibleTriangularNumber() {
         int number = 0;
         int increase = 1;
         while(numberOfDivisors(number) < 500){
