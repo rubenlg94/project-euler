@@ -10,22 +10,23 @@ public class Problem3 {
     What is the largest prime factor of the number 600851475143 ?
      */
 
+    private static final long number = 600851475143L;
+
     public static void solve() {
         largestPrimeFactor();
     }
 
     public static void largestPrimeFactor() {
         long number = 600851475143L;
-        int numberSqrt = (int) Math.sqrt(number);
-        boolean found = false;
-        while (!found) {
-            if (number % numberSqrt == 0 && Utils.isPrime(numberSqrt)) {
-                found = true;
-            } else {
-                numberSqrt--;
-            }
+        int result = (int) Math.sqrt(number);
+        while (!(isSolution(result))) {
+                result--;
         }
-        System.out.println(numberSqrt);
+        System.out.println(result);
+    }
+
+    private static boolean isSolution(int result) {
+        return number % result == 0 && Utils.isPrime(result);
     }
 
 }

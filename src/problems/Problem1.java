@@ -15,11 +15,15 @@ public class Problem1 {
     public static void multiplesOf3And5() {
         int result = 0;
         for (int i = 3; i < 1000; i++) {
-            if (i % 3 == 0 || i % 5 == 0) {
+            if (isMultipleOf3or5(i)) {
                 result += i;
             }
         }
         System.out.println(result);
+    }
+
+    private static boolean isMultipleOf3or5(int number) {
+        return number % 3 == 0 || number % 5 == 0;
     }
 
 }

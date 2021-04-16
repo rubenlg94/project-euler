@@ -13,6 +13,11 @@ public class Utils {
         return number % 2 == 0;
     }
 
+    public static final String[] numNames = {"", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten",
+            "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"};
+
+    public static final String[] tensNames = {"", "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"};
+
     public static boolean isPrime(int number) {
         boolean isPrime = true;
         int numberSqrt = (int) Math.sqrt(number);
@@ -44,7 +49,7 @@ public class Utils {
         Long factor = 2L;
         while (!isPrime(number)) {
             if (isPrime(factor) && number % factor == 0) {
-                while(number % factor == 0){
+                while (number % factor == 0) {
                     number = number / factor;
                 }
                 primeFactors.add(factor);
@@ -53,6 +58,16 @@ public class Utils {
         }
         primeFactors.add(number);
         return primeFactors;
+    }
+
+    public static List<Integer> divisors(int number) {
+        List<Integer> divisors = new ArrayList<>();
+        for(int i = 2; i <= number / 2; i++) {
+            if(number % i == 0) {
+                divisors.add(i);
+            }
+        }
+        return divisors;
     }
 
     public static int primeFactors(int number) {
@@ -75,7 +90,7 @@ public class Utils {
     public static int factorial(int n) {
         int result = 1;
         for (int i = 1; i <= n; i++) {
-            result *= n;
+            result *= i;
         }
         return result;
     }
@@ -91,17 +106,17 @@ public class Utils {
     public static List<String> permutations(String input) {
         List<String> letters = new ArrayList<>();
         for (int i = 0; i < input.length(); i++) {
-            letters.add(input.substring(i, i+1));
+            letters.add(input.substring(i, i + 1));
         }
         List<String> combinations = new ArrayList<>(letters);
         int count = 0;
-        while(count < letters.size()){
+        while (count < letters.size()) {
             List<String> auxCombinations = new ArrayList<>(combinations);
             List<String> auxLetters = new ArrayList<>(letters);
             auxLetters.remove(count);
-            for(String combination : combinations){
-                for(String letter:auxLetters){
-                    auxCombinations.add(combination+letter);
+            for (String combination : combinations) {
+                for (String letter : auxLetters) {
+                    auxCombinations.add(combination + letter);
                 }
             }
             combinations = auxCombinations;
@@ -123,6 +138,59 @@ public class Utils {
             current++;
         }
         return notPrimeNumbers;
+    }
+
+    public static String numberToWords(int number) {
+        String result = "";
+        result += thousandsToWords(number);
+        number = number >= 1000 ? number % 1000 : number;
+        result += hundredsToWords(number);
+        number = number >= 100 ? number % 100 : number;
+        result += tensToWords(number);
+        number = number >= 20 ? number % 10 : number;
+        result += unitsToWords(number);
+        return result;
+    }
+
+    private static String thousandsToWords(int number) {
+        String result = "";
+        if (number >= 1000) {
+            result += numNames[number / 1000] + "thousand";
+        }
+        return result;
+    }
+
+    private static String hundredsToWords(int number) {
+        String result = "";
+        if (number >= 100) {
+            result += numNames[number / 100] + "hundred";
+            if (number % 100 > 0) {
+                result += "and";
+            }
+        }
+        return result;
+    }
+
+    private static String tensToWords(int number) {
+        String result = "";
+        if (number >= 20) {
+            result += tensNames[number / 10];
+        }
+        return  result;
+    }
+
+    private static String unitsToWords(int number) {
+        String result = "";
+        if (number > 0) {
+            result += numNames[number];
+        }
+        return result;
+    }
+
+    public static boolean isAbundant(int number) {
+        List<Integer> divisors = divisors(number);
+        int divisorsSum = divisors.stream().reduce((integer, integer2) -> integer += integer2).orElse(0);
+        return divisorsSum > number;
     }
 
 }

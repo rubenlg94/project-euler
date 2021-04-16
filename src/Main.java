@@ -2,7 +2,7 @@ import java.lang.reflect.Method;
 
 public class Main {
 
-    public static final int PROBLEM_TO_SOLVE = 4;
+    public static final int PROBLEM_TO_SOLVE = 24;
 
     public static void main(String[] args) {
         if(args.length == 0){
