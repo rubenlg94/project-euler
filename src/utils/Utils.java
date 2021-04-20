@@ -1,7 +1,10 @@
 package utils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class Utils {
 
@@ -62,8 +65,8 @@ public class Utils {
 
     public static List<Integer> divisors(int number) {
         List<Integer> divisors = new ArrayList<>();
-        for(int i = 2; i <= number / 2; i++) {
-            if(number % i == 0) {
+        for (int i = 2; i <= number / 2; i++) {
+            if (number % i == 0) {
                 divisors.add(i);
             }
         }
@@ -125,7 +128,7 @@ public class Utils {
     }
 
     public static boolean[] getNotPrimes() {
-        boolean[] notPrimeNumbers = new boolean[200000];
+        boolean[] notPrimeNumbers = new boolean[1000000];
         int current = 2;
         while (current < notPrimeNumbers.length) {
             if (!notPrimeNumbers[current]) {
@@ -176,7 +179,7 @@ public class Utils {
         if (number >= 20) {
             result += tensNames[number / 10];
         }
-        return  result;
+        return result;
     }
 
     private static String unitsToWords(int number) {
@@ -191,6 +194,57 @@ public class Utils {
         List<Integer> divisors = divisors(number);
         int divisorsSum = divisors.stream().reduce((integer, integer2) -> integer += integer2).orElse(0);
         return divisorsSum > number;
+    }
+
+    public static boolean[] getSquares(int size) {
+        boolean[] squares = new boolean[size];
+        for (int i = 0; i < (int) Math.sqrt(size); i++) {
+                squares[i * i] = true;
+        }
+        return squares;
+    }
+
+    public static boolean isSquare(int number) {
+        int sqrt = (int) Math.sqrt(number);
+        return sqrt * sqrt == number;
+    }
+
+    public static boolean isSquare(long number) {
+        long sqrt = (long) Math.sqrt(number);
+        return sqrt * sqrt == number;
+    }
+
+    public static int eulerTotient(int number) {
+        boolean[] totients = new boolean[number];
+        totients[0] = false;
+        for(int i = 2; i < number; i++) {
+            if (!totients[i]) {
+                if (number % i == 0) {
+                    for (int j = i; j < number; j += i+1) {
+                        totients[j] = true;
+                    }
+                }
+            }
+        }
+        int contador = 0;
+        for(int i = 1; i < totients.length; i++) {
+            if(!totients[i]) {
+                contador++;
+            }
+        }
+        return contador;
+    }
+
+    public static List<Integer> relativelyPrimes(int number) {
+        List<Integer> numbers = new ArrayList<>();
+        for (int i = 1; i < number; i++) {
+            numbers.add(i);
+        }
+        List<Integer> divisors = divisors(number);
+        for(int divisor : divisors) {
+            numbers.removeIf(n -> n % divisor == 0);
+        }
+        return numbers;
     }
 
 }

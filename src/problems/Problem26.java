@@ -1,7 +1,5 @@
 package problems;
 
-import java.util.Arrays;
-
 public class Problem26 {
 
     public static void solve() {
@@ -9,16 +7,36 @@ public class Problem26 {
     }
 
     public static void reciprocalCycles() {
-        long result = 0;
-        for (double i = 2; i < 1000; i++) {
-            double fraction = 1 / i;
-            long fractionCycle = Arrays.asList(String.valueOf(fraction).toCharArray()).stream().distinct().count();
-            if (fractionCycle > result) {
-                result = fractionCycle;
-                System.out.println("i: " + i + " cycle: " + result);
+        int maxCycle = 0;
+        int result = 2;
+        for(int denominator = 2; denominator < 1000; denominator++) {
+            int currentCycle = recurringCycle(denominator);
+            if(currentCycle > maxCycle) {
+                maxCycle = currentCycle;
+                result = denominator;
             }
         }
         System.out.println(result);
+    }
+
+    private static int recurringCycle(int denominator) {
+        double division = 1.0 / denominator;
+        System.out.println(division);
+        boolean found = false;
+        int pow = 1;
+        while(!found) {
+            double result = division * Math.pow(10, pow);
+            double decimalPart = result - (int) result;
+            String strResult = String.valueOf(result);
+            String strDivision = String.valueOf(division);
+            if(decimalPart == 0 || strResult.substring(strResult.indexOf(".")).equals(strDivision.substring(strDivision.indexOf(".")))) {
+                found = true;
+            }
+            else {
+                pow++;
+            }
+        }
+        return pow;
     }
 
 }
